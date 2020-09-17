@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 // Must implement Serializable for our Beans when using MVC
 public class Burger implements Serializable {
-
     // properties for bun, pickles, numPatties, Cheese
     // properties all need to be private, when implementing MVC structure to our code
 
@@ -51,6 +50,14 @@ public class Burger implements Serializable {
     // }
 
     // ctrl - enter (to get the menu where you can create getters/setters)
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public int getNumBuns() {
         return numBuns;
