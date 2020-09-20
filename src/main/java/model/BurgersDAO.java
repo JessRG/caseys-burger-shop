@@ -8,6 +8,36 @@ public class BurgersDAO implements Burgers {
     // Create a temporary list, to hold the burgers as they are created
     private List<Burger> burgers = new ArrayList<>();
 
+
+    // Create some burgers that contain those ingredients
+    Ingredients ing = DaoFactory.getIngredientsDao();
+
+    public BurgersDAO() {
+        // BigMac = Patty x2, Buns x3, cheese (x1), pickles (x3)
+        long[] bmIngredients = { 1L, 3L, 6L, 7L };
+        Burger bigMac = new Burger("BigMac", buildIngredientList(bmIngredients));
+        burgers.add(bigMac);
+
+        // Homestyle = Patty x1, Buns x2, pickles (x3), tomatoes (x2)
+        long[] hsIngredients = { 1L, 2L, 5L, 4L };
+        Burger homeStyle = new Burger("Homestyle", buildIngredientList(hsIngredients));
+        burgers.add(homeStyle);
+
+        // Quarter Pounder = Buns x2, Patty x1, Pickles (x3), Cheese (x1)
+        long[] qpIngredients = { 1L, 3L, 6L, 7L };
+        Burger quarterPounder = new Burger("Quarter Pounder", buildIngredientList(qpIngredients));
+        burgers.add(quarterPounder);
+    }
+
+    public List<Ingredient> buildIngredientList(long[] list) {
+        List<Ingredient> iList = new ArrayList<>();
+        for (int i = 0; i < list.length; i++) {
+            iList.add(ing.findById(list[i]));
+        }
+        return iList;
+    }
+
+
     // if we had a MySQL connection _instead_ of an ArrayList, the create and find
     // methods would still do the exact same thing and return the exact same data
     // types

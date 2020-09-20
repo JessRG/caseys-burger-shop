@@ -10,16 +10,16 @@ public class Soda implements Serializable {
     // TODO: Create all properties, with correct access type (public/protected/private)
     private long id;
     private String name;
-    private int quantity;
+    private String size;
 
 
     // TODO: Create a zero-argument constructor
     public Soda() {}
 
     // TODO: Create a constructor with all properties except the ID
-    public Soda(String name, int quantity) {
+    public Soda(String name, int size) {
         this.name = name;
-        this.quantity = quantity;
+        setSize(size);
     }
 
     // TODO: Create all getters & setters
@@ -39,11 +39,27 @@ public class Soda implements Serializable {
         this.name = name;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public void setSize(int size) {
+        switch(size) {
+            case 1:
+                this.size = "Small";
+                break;
+            case 2:
+                this.size = "Medium";
+                break;
+            case 3:
+                this.size = "SuperSize";
+                break;
+            default:
+                this.size =  "Huh?";
+        }
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public String getSize() {
+        return size;
     }
+
+//    public void setSize(int size) {
+//        this.size = size;
+//    }
 }
